@@ -1,1 +1,1 @@
-# tm_photo_tools
+# TM Photo Tools by TM Photo Co.

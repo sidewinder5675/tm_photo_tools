@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Project</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-800 min-h-screen text-white">
+    <div
+      class="container mx-auto min-h-screen flex flex-col justify-center items-center"
+    >
+      <h1 class="text-3xl mb-6">Create New Project</h1>
+      <form
+        action="{{ url_for('create_project') }}"
+        method="POST"
+        class="w-full max-w-lg"
+      >
+        <div class="mb-4">
+          <label for="date" class="block text-sm font-bold mb-2"
+            >Project Date:</label
+          >
+          <input
+            type="date"
+            name="date"
+            id="date"
+            class="bg-gray-700 text-white rounded px-3 py-2 w-full"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="project_name" class="block text-sm font-bold mb-2"
+            >Project Name:</label
+          >
+          <input
+            type="text"
+            name="project_name"
+            id="project_name"
+            class="bg-gray-700 text-white rounded px-3 py-2 w-full"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

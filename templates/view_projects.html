@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Projects</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #111827;
+        color: #f3f4f6;
+      }
+      .container {
+        margin: 0 auto;
+        max-width: 768px;
+        padding: 2rem;
+      }
+      .heading {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      .project-card {
+        background-color: #1f2937;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .project-name {
+        font-size: 1.25rem;
+        text-align: center;
+        color: #f3f4f6;
+      }
+      .create-gif-button {
+        background-color: #60a5fa;
+        color: #f3f4f6;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        margin-left: auto;
+      }
+      .folder-icon {
+        font-size: 1.25rem;
+        color: #34d399;
+        margin-left: 1rem;
+      }
+      .folder-not-found-icon {
+        font-size: 1.25rem;
+        color: #ef4444;
+        margin-left: 1rem;
+      }
+    </style>
+    <script src="{{ url_for('static', filename='folder_exists.js') }}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">View Projects</h1>
+      <div class="project-list">
+        {% for project in sorted_projects %}
+        <div class="project-card">
+          <p class="project-name">{{ project.name }}</p>
+          {% if folder_exists(project.path, 'GIFs') %}
+          <i class="fas fa-check folder-icon"></i>
+          {% else %}
+          <i class="fas fa-times folder-not-found-icon"></i>
+          {% endif %}
+          <button
+            class="create-gif-button"
+            onclick="createGif('{{ project.path }}')"
+          >
+            Create GIF
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='folder_exists.js') }}"></script>
+  </body>
+</body>
+<script src="{{ url_for('static', filename='folder_exists.js') }}"></script>
+<script src="{{ url_for('static', filename='create_gif.js') }}"></script>
+</html>
+
+</html>
